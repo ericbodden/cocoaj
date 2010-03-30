@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# PLEASE SET THIS PATH TO MATCH YOUR JAVA RUNTIME ENVIRONMENT (JRE).
+# Because the entire JRE is analyzed when optimizations are
+# enabled in abc, we recommend a "small" JRE, for instance 1.4.
+#
+# EXAMPLE FOR LINUX:
+# JRE=/home/user/ebodde/bin/sun-jdk1.4.2_12/jre
+#
+# EXAMPLE FOR MAC-OS:
+# JRE=/System/Library/Frameworks/JavaVM.framework
+
+JRE=

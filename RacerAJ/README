@@ -1,0 +1,89 @@
+This code is made available under version 3 of the
+GNU GENERAL PUBLIC LICENSE. See the file LICENSE in this
+distribution for details. 
+
+This distribution contains the following files:
+
+abc-complete.jar	binary of extended abc compiler
+abc-runtime.jar		binary of abc runtime library
+abc-src.tgz		source of extended abc compiler
+compile.linux		compilation script for linux
+compile.mac		compilation script for MacOS
+compile-opt.linux	compilation + optimization script for linux
+compile-opt.mac		compilation + optimization script for MacOS
+LICENSE			copy of the GPL V3 license
+README			this file
+run			run script to run instrumented test program
+set-jre			configuration script pointing to your JRE
+src			source code of the Racer implementation
+test			test program from our paper
+
+
+###################################
+INSTALLATION
+###################################
+
+To compile and run our example, all you have to do is edit the file
+"set-jre" to point to your Java Runtime Environment.
+
+###################################
+COMPILATION
+###################################
+
+We provide a test example from our paper in the folder "test".
+On linux, invoke ./compile.linux to compile this example
+using abc.
+On MacOS, invoke ./compile.mac instead.
+
+Either command will run the abc compiler on the folder "test"
+and produce a version of "test" instrumented with Racer in
+the JAR file "out.jar".
+
+###################################
+RUNNING THE COMPILED CODE
+###################################
+
+Invoke ./run to run the instrumented program. It will report
+a race on variable "shared".
+
+###################################
+OPTIMIZING maybeShared()
+###################################
+
+To compile "test" and optimize the maybeShared() pointcut
+during compilation, invoke ./compile-opt.linux on linux,
+respectively ./compile-opt.mac on MacOS.
+
+###################################
+RUNNING THE OPTIMIZED CODE
+###################################
+
+Invoke ./run to run the instrumented program, just as before.
+Again, it will report a race on variable "shared".
+
+
+
+
+###################################
+OPTIONAL: DECOMPILATION
+###################################
+
+If the reviewers wish to convince themselves of the effect of our optimization
+they are welcome to decompile the woven code as follows.
+
+Edit the script compile.linux, respectively compile.mac to decompile the
+un-optimized code. Edit compile-opt.linux, respectively compile-opt.mac
+to decompile the optimized code. Edit the file(s) as follows.
+
+Add the following arguments to the java command line.
+
+To produce "Jimple" three-address code in the folder "sootOutput":
++soot -f J -soot
+
+To produce decompiled Java code in the folder "sootOutput":
++soot -f dava -soot
+
+
+
+
+In case of any questions, please email Eric Bodden <eric@bodden.de>. 

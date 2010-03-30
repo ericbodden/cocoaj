@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# This instruments all code in directory "test" with the Racer implementation.
+# The code is optimized using the thread-local objects analysis.
+# The resulting code is placed into the JAR file "out.jar".
+
+. ./set-jre
+
+if [ "$JRE" == "" ]; then
+
+  echo "Please modify the script \"set-jre\" to set your"
+  echo "Java Runtime Environment."
+
+else
+
+echo "abc now instruments all code in directory \"test\" with the Racer"
+echo "implementation, applying the thread-local objects analysis to optimize"
+echo "maybeShared(). The resulting code is placed into the JAR file"
+echo "\"out.jar\". abc will show a warning. This is normal and can"
+echo "be ignored."
+echo
+echo "The compilation and optimization process can take around two minutes."
+echo "In the end, abc will report that the field \"not_shared\" was indeed"
+echo "identified as not being shared."
+echo
+echo
+java -Xmx512m -cp abc-complete.jar abc.main.Main -cp abc-runtime.jar:${JRE}/lib/rt.jar:${JRE}/lib/jce.jar -ext abc.eaj -debug enableLockPointcuts -debug optimizeMaybeSharedPointcut -sourceroots src:test -outjar out.jar
+
+fi

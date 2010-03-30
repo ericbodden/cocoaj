@@ -1,0 +1,14 @@
+#!/bin/bash
+
+. ./set-jre
+
+if [ "$JRE" == "" ]; then
+
+  echo "Please modify the script \"set-jre\" to set your"
+  echo "Java Runtime Environment."
+
+else
+
+$JRE/bin/java -cp out.jar:abc-runtime.jar Task
+
+fi

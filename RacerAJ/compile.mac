@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# This instruments all code in directory "test" with the Racer implementation.
+# The resulting code is placed into the JAR file "out.jar".
+
+echo "abc now instruments all code in directory \"test\" with the Racer"
+echo "implementation. The resulting code is placed into the JAR file"
+echo "\"out.jar\". abc will show four warnings. These are normal and can"
+echo "be ignored."
+echo
+echo
+java -cp abc-complete.jar abc.main.Main -ext abc.eaj -debug enableLockPointcuts -sourceroots src:test -outjar out.jar
